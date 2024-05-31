@@ -52,7 +52,6 @@ public class ShooterSubsystem extends SubsystemBase {
     private int SHOOTER_MOTOR_ID1 = 21;
     private int SHOOTER_MOTOR_ID3 = 26;
 
-
     public ShooterSubsystem(Robot robot) {
         this.upperMotor = new ShootMotor(SHOOTER_MOTOR_ID1, false);
         this.lowerMotor = new ShootMotor(SHOOTER_MOTOR_ID3, true);
@@ -107,6 +106,24 @@ public class ShooterSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
+        int pov = robot.cont.getPOV();
+        double value = 0;
+        if (pov >= 0) {
+            if (pov == 0) {
+                value = 0.0;
+            }
+            if (pov == 90) {
+                value = 0.25;
+            }
+            if (pov == 180) {
+                value = 0.7;
+            }
+            if (pov == 270) {
+                value = 0.9;
+            }
+            setAllShooterPower(value);
+        }
+
         if (robot.cont.getAButton()) {
             setAllShooterPower(.5);
         }
