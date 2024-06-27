@@ -30,11 +30,12 @@ public class Robot extends TimedRobot {
 
   CANcoder canCoder;
   public XboxController cont = new XboxController(2);
+  public IntakeSubsystem intake = new IntakeSubsystem(this);
   private RelativeEncoder encR;
   private RelativeEncoder encL;
   public long count = 0;
   //public static MotorNeo neo = new MotorNeo();
-  public ShooterSubsystem shooter = new ShooterSubsystem(this);
+  //public ShooterSubsystem shooter = new ShooterSubsystem(this);
   // Initializes an AnalogInput on port 0
   AnalogInput analog = new AnalogInput(0);
   LedSubsystem leds = new LedSubsystem();
@@ -68,10 +69,10 @@ leds.setAllianceLeds();
   @Override
   public void teleopPeriodic() {
     //System.out.println("Test " + analog.getVoltage());
-      int pov = cont.getPOV();
-      if(pov >= 0) {
-        leds.setColors(Leds.GrabberOverCurrent, 80,0,0);
-      }
+      // int pov = cont.getPOV();
+      // if(pov >= 0) {
+      //   leds.setColors(Leds.GrabberOverCurrent, 80,0,0);
+      // }
   }
 
   public void teleopPeriodicOwen() {

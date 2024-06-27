@@ -43,29 +43,28 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  * load the shuffleboard.json file in the root of this directory to get the full
  * effect of the GUI layout.
  */
-public class ShooterSubsystem extends SubsystemBase {
+public class IntakeSubsystem extends SubsystemBase {
     private Robot robot;
 
-    private ShootMotor lowerMotor;
-    private ShootMotor upperMotor;
+    private IntakeMotor motor;
+  
     private PID_MAX pid = new PID_MAX();
     private final static int OVER_CURRENT = 30;
-    private int SHOOTER_MOTOR_ID1 = 26;
-    private int SHOOTER_MOTOR_ID3 = 21;
+    private int INTAKE_MOTOR_ID = 16;
 
-    public ShooterSubsystem(Robot robot) {
-        this.upperMotor = new ShootMotor(SHOOTER_MOTOR_ID1, false);
-        this.lowerMotor = new ShootMotor(SHOOTER_MOTOR_ID3, true);
+
+    public IntakeSubsystem(Robot robot) {
+        this.motor = new IntakeMotor(INTAKE_MOTOR_ID, false);
         this.robot = robot;
     }
 
-    class ShootMotor {
+    class IntakeMotor {
         CANSparkFlex motor;
         SparkPIDController pidController;
         RelativeEncoder encoder;
         int id;
 
-        ShootMotor(int id, boolean inverted) {
+        IntakeMotor(int id, boolean inverted) {
             this.id = id;
             motor = new CANSparkFlex(id, MotorType.kBrushless);
             motor.restoreFactoryDefaults();
@@ -109,20 +108,14 @@ public class ShooterSubsystem extends SubsystemBase {
         }
     }
 
-    void setAllShooterPower(double power) {
-        upperMotor.setShooterVelocity(power);
-        lowerMotor.setShooterVelocity(power);
-    }
-
     int lastPOV = -1;
 
     @Override
     public void periodic() {
         //if (robot.count % 5 == 0) {
-                   SmartDashboard.putNumber("Motor Up", upperMotor.getVelocity());
-                   SmartDashboard.putNumber("Motor Down", lowerMotor.getVelocity());
-                   SmartDashboard.putNumber("Motor Diff", upperMotor.getVelocity() - lowerMotor.getVelocity());
-                   SmartDashboard.putNumber("Motor Pos", lowerMotor.getPosition());
+                   SmartDashboard.putNumber("Intake Speed", motor.getVelocity());
+                   
+                   SmartDashboard.putNumber("Intake Pos", motor.getPosition());
         //}
        
         int pov = robot.cont.getPOV();
@@ -142,26 +135,26 @@ public class ShooterSubsystem extends SubsystemBase {
             if (pov == 270) {
                 value = 0.9;
             }
-            upperMotor.setSpeed(value);
-            lowerMotor.setSpeed(value);
+           motor.setSpeed(value);
+          
 
             lastPOV = pov;
         }else if(lastPOV != pov){
             lastPOV = pov;
         }
 
-        if (robot.cont.getAButton()) {
-            setAllShooterPower(.65);
-        }
-        if (robot.cont.getBButton()) {
-            setAllShooterPower(0.7);
-        }
-        if (robot.cont.getYButton()) {
-            setAllShooterPower(0.67);
-        }
-        if (robot.cont.getXButton()) {
-            upperMotor.setSpeed(0);
-            lowerMotor.setSpeed(0);
-        }
+        // if (robot.cont.getAButton()) {
+        //     setAllShooterPower(.65);
+        // }
+        // if (robot.cont.getBButton()) {
+        //     setAllShooterPower(0.7);
+        // }
+        // if (robot.cont.getYButton()) {
+        //     setAllShooterPower(0.67);
+        // }
+        // if (robot.cont.getXButton()) {
+        //     upperMotor.setSpeed(0);
+        //     lowerMotor.setSpeed(0);
+        // }
     }
 }
