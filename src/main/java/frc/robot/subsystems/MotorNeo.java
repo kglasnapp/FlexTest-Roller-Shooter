@@ -1,9 +1,12 @@
-package frc.robot;
+package frc.robot.subsystems;
 
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import frc.robot.Robot;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkLimitSwitch;
@@ -117,7 +120,7 @@ public class MotorNeo {
         boolean fLimit = forwardLimit.isPressed();
         SparkLimitSwitch reverseLimit = motorTest.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         boolean rLimit = reverseLimit.isPressed();
-        if (robot.count % 10 == 0) {
+        if (Robot.count % 10 == 0) {
             System.out.println("For" + fLimit + "Rev" + rLimit);
         }
 

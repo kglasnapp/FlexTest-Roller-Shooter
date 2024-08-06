@@ -1,6 +1,6 @@
-package frc.robot;
+package frc.robot.subsystems;
 
-import static frc.robot.Util.logf;
+import static frc.robot.utilities.Util.logf;
 import com.revrobotics.SparkPIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -22,19 +22,20 @@ public class PID_MAX {
         // maxRPM = 5700; // for velocity mode
         maxVel = 7000; // for velocity mode
         maxAcc = 15000;
-        this.pidController =  pidController;
+        this.pidController = pidController;
         pidName = "Shoot";
 
     }
 
-
-
     public void PIDCoefficientsShooterTilt(SparkPIDController pidController) {
         kP = 29e-6;
-        kI = 1e-6;
-        kD = 0;
+        kP = .00005; 
+        kI = .5e-6 ;
+       // kI = 0;
+        kD = .00005;
         kIz = 0;
         kFF = 0.000158;
+        kFF = 0;
         kMaxOutput = 1;
         kMinOutput = -1;
         // Smart Motion Coefficients
@@ -42,7 +43,7 @@ public class PID_MAX {
 
         maxVel = 15500; // for velocity mode
         maxAcc = 10000;
-        this.pidController =  pidController;
+        this.pidController = pidController;
         pidName = "Tilt";
 
     }
@@ -59,7 +60,7 @@ public class PID_MAX {
         // maxRPM = 5700; // for velocity mode
         maxVel = 2000; // for velocity mode
         maxAcc = 1500;
-        this.pidController =  pidController;
+        this.pidController = pidController;
         pidName = "Tilt";
 
     }
@@ -76,11 +77,10 @@ public class PID_MAX {
         // maxRPM = 5700; // for velocity mode
         maxVel = 8000; // for velocity mode
         maxAcc = 4500;
-        this.pidController =  pidController;
+        this.pidController = pidController;
         pidName = "Tilt";
 
     }
-
 
     public void PIDCoefficientsElevator(SparkPIDController pidController) {
         kP = 45e-6;
@@ -94,10 +94,10 @@ public class PID_MAX {
         // maxRPM = 5700; // for velocity mode
         maxVel = 5700; // for velocity mode
         maxAcc = 5700 * 2;
-        this.pidController =  pidController;
+        this.pidController = pidController;
         pidName = "Elevator";
     }
-    
+
     public void PIDCoefficientsIntake(SparkPIDController pidController) {
         kP = .03;
         kI = 0;
@@ -110,7 +110,7 @@ public class PID_MAX {
         // maxRPM = 5700; // for velocity mode
         maxVel = 2000; // for velocity mode
         maxAcc = 1500;
-        this.pidController =  pidController;
+        this.pidController = pidController;
         pidName = "Intake";
 
     }
@@ -166,7 +166,8 @@ public class PID_MAX {
         double minV = SmartDashboard.getNumber("Min Velocity", 0);
         double maxA = SmartDashboard.getNumber("Max Acceleration", 0);
         double allE = SmartDashboard.getNumber("Allowed Closed Loop Error", 0);
-        // if PID coefficients on SmartDashboard have changed, write new values to controller
+        // if PID coefficients on SmartDashboard have changed, write new values to
+        // controller
         if ((p != kP)) {
             pidController.setP(p);
             kP = p;

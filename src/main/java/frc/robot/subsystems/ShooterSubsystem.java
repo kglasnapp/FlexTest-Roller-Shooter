@@ -1,6 +1,6 @@
-package frc.robot;
+package frc.robot.subsystems;
 
-import static frc.robot.Util.logf;
+import static frc.robot.utilities.Util.logf;
 
 import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkBase.IdleMode;
@@ -11,6 +11,7 @@ import com.revrobotics.SparkPIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 
 /**
  * REV Smart Motion Guide
