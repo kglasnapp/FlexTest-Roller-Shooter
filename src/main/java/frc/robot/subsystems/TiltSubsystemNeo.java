@@ -56,7 +56,7 @@ public class TiltSubsystemNeo extends SubsystemBase {
     private SparkLimitSwitch tiltForwardLimit;
     private SparkPIDController pidControllerTiltMotor;
     private PID_MAX pid = new PID_MAX();
-    private int TILT_SHOOTER_MOTOR_ID = 20;
+    private int TILT_SHOOTER_MOTOR_ID = 21;
     private RelativeEncoder tiltEncoder;
     private double lastRotations = 0;
     private final static double DEGREES_PER_REV = 360.0;

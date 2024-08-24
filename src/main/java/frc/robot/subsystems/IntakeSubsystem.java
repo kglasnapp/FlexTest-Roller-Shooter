@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 /**
  * REV Smart Motion Guide
@@ -119,7 +120,7 @@ public class IntakeSubsystem extends SubsystemBase {
                    SmartDashboard.putNumber("Intake Pos", motor.getPosition());
         //}
        
-        int pov = robot.cont.getPOV();
+        int pov = RobotContainer.driveHID.getPOV();
     
         double value = 0;
         if ((lastPOV != pov) && (pov >= 0)) {
