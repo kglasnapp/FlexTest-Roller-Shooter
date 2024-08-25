@@ -57,6 +57,8 @@ public class ClimberSubsystem extends SubsystemBase {
     private final double unLockAngle = 0;
     private final double lockAngle = .12;
 
+    
+
     // Called when robot is started
     public ClimberSubsystem() {
         logf("Setup Climber Subsystem");

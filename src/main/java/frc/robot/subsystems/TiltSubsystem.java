@@ -140,8 +140,8 @@ public class TiltSubsystem extends SubsystemBase {
         // tiltMotor.set(val);
         if (Robot.count % 10 == 0) {
             SmartDashboard.putBoolean("Tilt RevL", reverseLimit.get());
-            // SmartDashboard.putBoolean("TiltRev", tiltReverseLimit.isPressed());
-            // SmartDashboard.putBoolean("TiltFWD", tiltForwardLimit.isPressed());
+            SmartDashboard.putBoolean("TiltRev", tiltReverseLimit.isPressed());
+            SmartDashboard.putBoolean("TiltFWD", tiltForwardLimit.isPressed());
             SmartDashboard.putString("TiltSts", state.toString());
             SmartDashboard.putNumber("TiltCur",tiltCurrent );
             SmartDashboard.putNumber("ovCnt", overCurrentCount);

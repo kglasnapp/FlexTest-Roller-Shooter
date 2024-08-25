@@ -1,8 +1,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.LedSubsystem;
@@ -20,17 +22,21 @@ Command cmd;
   public static long count = 0;
   AnalogInput analog = new AnalogInput(0);
   LedSubsystem leds = new LedSubsystem();
+  Encoder enc = new Encoder(0,1);
 
   @Override
   public void robotInit() {
     leds.setAllianceLeds();
-     robotContainer.climber.homeClimber();
-    // TODO TiltSubsystem tilt = new TiltSubsystem(this);
+
+     //robotContainer.climber.homeClimber();
+    TiltSubsystem tilt = new TiltSubsystem(this);
   }
 
   @Override
   public void robotPeriodic() {
     count++;
+    int encCount = enc.get();
+    SmartDashboard.putNumber("Encoder", encCount);
     CommandScheduler.getInstance().run();
   }
 
@@ -45,7 +51,7 @@ Command cmd;
       cmd.cancel();
     }
     //hasBeenHomed = false;
-    robotContainer.climber.disableRobot();
+   // robotContainer.climber.disableRobot();
 
   }
 

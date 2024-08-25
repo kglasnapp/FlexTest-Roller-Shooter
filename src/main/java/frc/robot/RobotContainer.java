@@ -11,5 +11,8 @@ public class RobotContainer {
     //public final static XboxController operatorHID = operatorController.getHID();
     public final static XboxController driveHID = driveController.getHID();
 
-    ClimberSubsystem  climber = new ClimberSubsystem();
+    //ClimberSubsystem  climber = new ClimberSubsystem();
+
+
+    
 }
