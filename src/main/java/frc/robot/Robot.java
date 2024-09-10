@@ -13,23 +13,22 @@ import static frc.robot.utilities.Util.logf;
 
 public class Robot extends TimedRobot {
   public XboxController cont = new XboxController(2);
-  
-public RobotContainer robotContainer = new RobotContainer();
-Command cmd;
-  
 
-  //public IntakeSubsystem intake = new IntakeSubsystem(this);
+  public RobotContainer robotContainer = new RobotContainer();
+  Command cmd;
+
+  // public IntakeSubsystem intake = new IntakeSubsystem(this);
   public static long count = 0;
   AnalogInput analog = new AnalogInput(0);
   LedSubsystem leds = new LedSubsystem();
-  Encoder enc = new Encoder(0,1);
+  Encoder enc = new Encoder(0, 1);
 
   @Override
   public void robotInit() {
     leds.setAllianceLeds();
 
-     //robotContainer.climber.homeClimber();
-    TiltSubsystem tilt = new TiltSubsystem(this);
+    // robotContainer.climber.homeClimber();
+    //new TiltSubsystem(this);
   }
 
   @Override
@@ -50,10 +49,9 @@ Command cmd;
       logf("Executing disabled init %s\n", cmd.getName());
       cmd.cancel();
     }
-    //hasBeenHomed = false;
-   // robotContainer.climber.disableRobot();
+    // hasBeenHomed = false;
+    // robotContainer.climber.disableRobot();
 
   }
-
 
 }

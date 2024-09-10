@@ -266,10 +266,6 @@ public class ClimberSubsystem extends SubsystemBase {
 
     }
 
-    private void lockServos() {
-        controlSERVOs(false);
-    }
-
     private void lockServos(int code) {
         logf("lockServos code:%d\n", code);
         controlSERVOs(false);

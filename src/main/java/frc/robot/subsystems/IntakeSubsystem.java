@@ -46,18 +46,14 @@ import frc.robot.RobotContainer;
  * effect of the GUI layout.
  */
 public class IntakeSubsystem extends SubsystemBase {
-    private Robot robot;
-
-    private IntakeMotor motor;
-  
+    private IntakeMotor motor;  
     private PID_MAX pid = new PID_MAX();
     private final static int OVER_CURRENT = 30;
     private int INTAKE_MOTOR_ID = 16;
 
 
-    public IntakeSubsystem(Robot robot) {
+    public IntakeSubsystem() {
         this.motor = new IntakeMotor(INTAKE_MOTOR_ID, false);
-        this.robot = robot;
     }
 
     class IntakeMotor {
@@ -114,11 +110,10 @@ public class IntakeSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        //if (robot.count % 5 == 0) {
+        if (Robot.count % 5 == 0) {
                    SmartDashboard.putNumber("Intake Speed", motor.getVelocity());
-                   
                    SmartDashboard.putNumber("Intake Pos", motor.getPosition());
-        //}
+        }
        
         int pov = RobotContainer.driveHID.getPOV();
     

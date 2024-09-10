@@ -119,7 +119,7 @@ public class TiltSubsystem extends SubsystemBase {
             overCurrentCount = 0;
             tiltMotor.set(0);
         }
-        int delta = 500;
+        //int delta = 500;
         boolean buttonDown = robot.cont.getLeftBumperPressed();
         boolean buttonUp = robot.cont.getRightBumperPressed();
         if (buttonDown) {

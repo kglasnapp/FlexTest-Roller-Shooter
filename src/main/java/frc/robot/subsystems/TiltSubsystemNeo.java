@@ -121,7 +121,7 @@ public class TiltSubsystemNeo extends SubsystemBase {
             overCurrentCount = 0;
             tiltMotor.set(0);
         }
-        int delta = 500;
+        //int delta = 500;
         double val = robot.cont.getRightY();
         tiltMotor.set(val * .15);
         boolean buttonDown = robot.cont.getLeftBumperPressed();
